@@ -24,6 +24,3 @@ class Post(models.Model):
 
 
 
-# myenv\scripts\activate
-# python manage.py runserver
-# d:/Projects/Blog/myenv/Scripts/activate.bat

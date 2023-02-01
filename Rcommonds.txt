@@ -1,3 +1,6 @@
 winpty python manage.py createsuperuser
 source myenv/scripts/activate
 git config --global --add safe.directory
+# myenv\scripts\activate
+# python manage.py runserver
+# d:/Projects/Blog/myenv/Scripts/activate.bat
