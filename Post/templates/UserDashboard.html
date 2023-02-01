@@ -1,0 +1,86 @@
+{% extends 'Blog_Home.html' %}
+
+{% block content %}
+<h3 class='text-white text-center'>User Dashboard Page</h3>
+        <h4 class='text-center alert alert-info mt-3'> Show Post
+            information </h4>
+            
+ <div class="container">
+  <div class="row">
+    <!------------------------------------------------------------------>
+    <div class="col-md-3">
+      
+      <div class='pt-5'><h4> User Profile </h4>
+        <section class="vh-100">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col col-md-9 col-lg-7 col-xl-5">
+                <div class="card" style="border-radius: 10px;">
+                  <div class="card-body p-3"> <!-- white border -->
+                    <div class="d-flex text-black">
+                      <div class="flex-shrink-0">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                          alt="Generic placeholder image" class="img-fluid"
+                          style="width: 160px; border-radius: 10px;">
+                      </div>
+                      <div class="flex-grow-1 ms-3">
+                        <h5 class="mb-3">{{ full_name }}</h5>
+                        {% for gps in group %}
+                         <p class='primary'>{{gps.name}}</p>
+                        {% endfor %}
+                        <div class="justify-content-start rounded-3 p-2 mb-2"
+                          style="background-color: #efefef;">
+                        <p class="mb-2 pb-1" style="color: #2b2a2a;">Wanna Be Programmer</p>
+                        <div class=" justify-content-start rounded-3 p-2 mb-2"
+                          style="background-color: #efefef;">
+                          <div>
+                            <p class="small text-muted mb-1">Articles</p>
+                            {% comment %} {% for post in posts %}
+                            <p class="mb-0">{{ user.post }}</p>
+                            {% endfor %} {% endcomment %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <!------------------------------------------------------------------>
+    <div class="col-md-9">
+        <a class="btn btn-primary btn-md mb-3 mt-3" href="{% url 'POSTS' %}"role="button">Add Post</a>
+            {% comment %} {% if posts %} {% endcomment %}
+              {% for post in posts %}
+            <div class="a">  
+                <div class="jumbotron text-light bg-secondary">
+                  <h1 class="display-4">Author id-{{ post.author.id }}</h1>
+                  <h1 class="display-4">Post id-{{ post.id }}</h1>
+                  <h1 class="display-4">{{ post.title }}</h1>
+                  <h6><p class="lead"> by-{{ post.author }}</p></h6>
+                  <h6><p class="lead"> On - {{ post.created_on }}</p></h6>
+                  <hr class="my-4">
+                  <p>{{ post.content }}</p>
+                  <p class="lead1">
+                    <a class="btn btn-primary btn-md" href="{% url 'Update' post.id %}"role="button">Edit</a>
+                    {% if perms.Blog.delete_post %} <!-- To check if the user is admin and if he/she not admin thedon't show Delete option-->
+                    <a class="btn btn-primary btn-md" href="/delete/{{ post.id }}" role="button">Delete</a>
+                    {% endif %}
+                  </p>
+                  <!--p class="lead1">
+                    <a class="btn btn-primary btn-md" href="{% url 'BLOGVIEW' post.pk %}" role="button">Read more</a>
+                  </p-->
+                </div>
+              </div>
+                    {% endfor %}
+            </div>
+  </div>
+</div>
+     {% endblock %}
+
+
+           

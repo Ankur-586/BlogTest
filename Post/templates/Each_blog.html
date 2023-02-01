@@ -1,0 +1,20 @@
+{% extends "Blog_Home.html" %}
+{% block content %}
+     <!-- AS THIS SHOWS ONLY ONE BLOG DETAILS,ONE AT A TIME WE DONT HAVE TO LOOP THROUGH
+                IF WE HAD TO SHOW ALL THE BLOGS IN ONE PAGE THEN WE LOOP THROUGH-->
+        <div class="a">  
+            <h2> Each Blog According to PK  </h2>
+            <div class="jumbotron text-light bg-secondary">
+              <h1 class="display-4">{{ rec.title }}</h1>
+              <h6><p class="lead"> by-{{ rec.author }}</p></h6>
+              <hr class="my-4">
+              <p>{{ rec.content }}</p>
+              <!--p class="lead1">
+                <a class="btn btn-primary btn-md" href="/update/{{ rec.id }}"role="button">Edit</a>
+                {% if perms.Blog.delete_post %}
+                <a class="btn btn-primary btn-md" href="/delete/{{ rec.id }}" role="button">Delete</a>
+                {% endif %}
+              </p-->
+            </div>
+          </div>
+{% endblock %}

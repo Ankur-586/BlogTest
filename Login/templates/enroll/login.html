@@ -1,0 +1,22 @@
+{% extends "Blog_Home.html" %}
+{% block content %} 
+        <div class='container'>
+          <div class="col-sm-10">
+            <h3 class='text-white'> Login </h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                  {% for i in form %} 
+                  <div class='form-group'>
+                  {{i.label_tag}} {{i}} {{i.errors|striptags}}<br>
+                </div>
+                  {% endfor %} 
+                <input type="submit" class='btn btn-primary' value="Login">
+                {% if form.non_field_errors %}
+                 {% for error in form.non_field_errors %}
+                 <p>{{error}}</p>
+                 {% endfor %}
+                 {% endif %}
+            </form>      
+          </div>
+        </div>
+{% endblock %}

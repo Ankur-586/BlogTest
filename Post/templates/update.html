@@ -1,0 +1,25 @@
+{% extends 'Blog_home.html' %}
+{% load static %}
+{% block content %}
+<h2> Update Post </h2>
+<div class='container'>
+     <div class="col-sm-10">
+        <form method="POST">
+            {% csrf_token %}
+            {% for i in form %} 
+                  <div class='form-group'>
+                  {{i.label_tag}} {{i}} {{i.errors|striptags}}<br>
+                </div>
+            {% endfor %}  
+            <input type="submit" class='btn btn-primary' value="Update">
+            {% if form.non_field_errors %}
+                 {% for error in form.non_field_errors %}
+                 <p>{{error}}</p>
+                 {% endfor %}
+                 {% endif %}
+        </form> 
+        {% comment %} <p> <a href="{% url 'BlogHome' %}"> Home </a> </p> {% endcomment %}
+    </div>
+</div>
+
+ {% endblock %}
