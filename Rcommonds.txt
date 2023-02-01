@@ -4,3 +4,4 @@ git config --global --add safe.directory
 # myenv\scripts\activate
 # python manage.py runserver
 # d:/Projects/Blog/myenv/Scripts/activate.bat
+#commit test
